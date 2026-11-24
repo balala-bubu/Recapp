@@ -725,7 +725,7 @@ const scene=i=>{const[k,a,b,c,d]=SC[i%SC.length];let s=`<rect width="100" height
 const PH=['七星潭的海','太魯閣步道','民宿頂樓','第一天早餐','砂卡礑','傍晚的海邊','清水斷崖','夜市','小鎮巷子','火車上','民宿門口','回程月台'];
 const FORMATS=[{id:'igpost',n:'IG 貼文',ic:'img',pub:'發佈到 IG'},{id:'igstory',n:'IG 限動',ic:'story',pub:'分享到限動'},{id:'fb',n:'FB 貼文',ic:'post',pub:'發佈到 FB'},{id:'medium',n:'Medium 文章',ic:'doc',pub:'發佈到 Medium'},{id:'news',n:'電子報',ic:'mail',pub:'寄出電子報'},{id:'lib',n:'個人 Library',ic:'folder',pub:null}];
 const MATS=[{id:'photo',n:'照片・影片',s:'照片',ic:'img',to:'photos'},{id:'text',n:'文字・筆記',s:'文字',ic:'text',to:'textMenu'},{id:'music',n:'音樂',s:'音樂',ic:'music',to:'music'}];
-const TRACKS=[['海風很鹹','示意歌手 A',0],['Long Weekend','示意歌手 B',5],['夜車','示意歌手 C',2],['把日子曬乾','示意歌手 D',1],['Small Town','示意歌手 E',8]];
+const TRACKS=[['海風很鹹','Mira Lane',0],['Long Weekend','Sunday Ferry',5],['夜車','夜行列車',2],['把日子曬乾','Lumen',1],['Small Town','The Quiet Fields',8]];
 const NOTES=[['備忘錄 · 11/15','七星潭石頭比賽：誰撿到最圓的？結果是阿哲那顆根本不圓的。'],['LINE 群組 · 11/16','花蓮小隊：「明天早上六點看日出，誰起不來就請早餐」'],['備忘錄 · 11/17','回程火車上：這次沒什麼計畫，卻是今年最放鬆的四天。']];
 const WORDS=['放鬆','好笑','累但值得','吃很飽','有點冒險','很感動'];
 const MOMENTS=['一起吃飯的時候','路上的風景','晚上聊天','一個人安靜的時刻'];
@@ -734,7 +734,7 @@ const BOT=t=>[`嗨！「${t}」這段時間，第一個浮現在腦海的畫面�
 const SAY={title:['和朋友去花蓮的四天'],recall:['那天下午在七星潭撿石頭，阿哲說要帶一顆回台北，結果背包裡全是石頭。','爬步道爬到一半下起小雨，我們躲在涼亭分一包餅乾，其實很開心。','最後一晚在頂樓看星星，大家都沒說話，但那是我最放鬆的時刻。'],chat:['第一個想到的，是在民宿頂樓躺著看星星，聊到快兩點。','我們在比誰撿到的石頭最圓，最後大家都輸給一顆根本不圓的。','很放鬆吧，好像終於可以什麼都不想。'],guide:['最常想起的，是大家一起笑到肚子痛。','最想記住第一天晚上在頂樓聊天的時候。','謝謝那時候願意出發的自己，下次也要記得休息。'],write:['這次花蓮沒什麼計畫，卻是今年最放鬆的四天。謝謝一起出發的你們，下次換我排行程。']};
 const MCOUNT=[2,3,1,1,2,1,1,0,2,2,0,0];
 const LIBT=[['期末考週','寒假第一週'],['大三上回顧','台南三日','開學前的書單'],['社課期中成果'],['讀書會：設計心理學'],['期中週生存紀錄','五月讀完的三本書'],['畢業典禮'],['暑假實習第一個月'],[],['開學讀書計畫','九月讀書筆記'],['期中報告衝刺','十月讀書會']];
-const LIB=LIBT.map((ts,m)=>ts.map((t,k)=>({title:t,range:`2026 年 ${m+1} 月`,photos:[(m*3+k)%12,(m*3+4+k)%12,(m*3+7)%12],format:'lib',parts:[`（示意內容）這是 ${m+1} 月存進 Library 的回顧「${t}」。`,'當時還沒決定要發在哪，先存起來；現在隨時可以選平台發佈。'],words:[],music:null,links:[],published:[]})));
+const LIB=LIBT.map((ts,m)=>ts.map((t,k)=>({title:t,range:`2026 年 ${m+1} 月`,photos:[(m*3+k)%12,(m*3+4+k)%12,(m*3+7)%12],format:'lib',parts:[`${m+1} 月的「${t}」。`,'當時還沒想好要發在哪，就先存進 Library 了。'],words:[],music:null,links:[],published:[]})));
 const PARENT={login:'auth',signup:'auth',q1:'home',q2:'q1',q3:'q2',q4:'q3',list:'q4',photos:'list',textMenu:'list',recall:'textMenu',chat:'textMenu',guide:'textMenu',write:'textMenu',find:'textMenu',music:'list',mix:'textMenu',scenario:'auth',page:'list',library:'home',recap:'library',gen:'list'};
 const STAGES=[['開始',[['0','情境測試','scenario'],['0','開場介紹','intro'],['0','登入／註冊','auth']]],['階段一｜引導',[['1-1','想整理什麼','q1'],['1-2','輸出形式','q2'],['1-3','整理區間','q3'],['1-4','素材類型','q4']]],['階段二｜整理',[['2-0','整理清單','list'],['2-1','照片整理','photos'],['2-2','文字整理','textMenu'],['','　整合成一篇','mix'],['','　聊一聊','chat'],['','　問題引導','guide'],['2-3','產生完整的一頁','gen'],['2-4','完成紀錄頁面','page']]],['階段三｜故事',[['3-1','Library（月／年）','library'],['3-2','年末回顧','recap']]]];
 const USER={name:'小安',authed:false};
@@ -780,20 +780,19 @@ auth:()=>`<div class="body auth">
  <div class="or st" style="--i:4">或</div>
  <button class="btn ghost st" style="--i:5;flex:none" data-act="go" data-to="login">用 Email 登入</button>
  <p class="swap2 st" style="--i:6">還沒有帳號？<button class="lnk" data-act="go" data-to="signup">註冊</button></p>
- <p class="st" style="--i:7;text-align:center;margin:0"><button class="lnk mute" data-act="guest">先逛逛，之後再登入</button></p>
- <p class="fine">示意畫面：不會送出或儲存任何帳號資料。</p></div>`,
+ <p class="st" style="--i:7;text-align:center;margin:0"><button class="lnk mute" data-act="guest">先逛逛，之後再登入</button></p></div>`,
 login:()=>`${hdr('用 Email 登入')}<form class="body" data-form="login" style="display:flex;flex-direction:column">
  <h2 class="q st" style="--i:0;margin-top:8px">歡迎回來</h2><p class="hint st" style="--i:1">登入後，會接著你上次的整理。</p>
  <div class="fld st" style="--i:2"><label for="le">Email</label><input id="le" type="email" autocomplete="off" placeholder="you@example.com"></div>
  <div class="fld st" style="--i:3"><label for="lp">密碼</label><input id="lp" type="password" autocomplete="off" placeholder="輸入密碼"></div>
- <p class="st" style="--i:4;margin:0;text-align:right"><button type="button" class="lnk mute" data-act="toast" data-v="示意：會寄出重設密碼的信">忘記密碼？</button></p>
+ <p class="st" style="--i:4;margin:0;text-align:right"><button type="button" class="lnk mute" data-act="toast" data-v="已寄出重設密碼的信">忘記密碼？</button></p>
  <button class="btn st" style="--i:5;flex:none;margin-top:auto">登入</button></form>`,
 signup:()=>`${hdr('註冊帳號')}<form class="body" data-form="signup" style="display:flex;flex-direction:column">
  <h2 class="q st" style="--i:0;margin-top:8px">先認識一下你</h2><p class="hint st" style="--i:1">名字只用來跟你打招呼。</p>
  <div class="fld st" style="--i:2"><label for="sn">怎麼稱呼你？</label><input id="sn" autocomplete="off" placeholder="例如：小安" maxlength="12"></div>
  <div class="fld st" style="--i:3"><label for="se">Email</label><input id="se" type="email" autocomplete="off" placeholder="you@example.com"></div>
  <div class="fld st" style="--i:4"><label for="sp">密碼</label><input id="sp" type="password" autocomplete="off" placeholder="至少 8 個字元"></div>
- <label class="agree st" style="--i:5"><input type="checkbox" id="sa" style="width:20px;height:20px;margin:2px 0 0;accent-color:#1C1B2E">我同意服務條款與隱私權政策（示意）</label>
+ <label class="agree st" style="--i:5"><input type="checkbox" id="sa" style="width:20px;height:20px;margin:2px 0 0;accent-color:#1C1B2E">我同意服務條款與隱私權政策</label>
  <button class="btn cta st" style="--i:6;flex:none;margin-top:auto">建立帳號</button></form>`,
 home:()=>`<div class="body home">
  <div class="brand st" style="--i:0">${cap(32)}<span class="wm">Re<b>cap</b>p</span><button class="pillbtn" style="margin-left:auto" data-act="intro">${I('play','style="width:14px;height:14px"')}看介紹</button></div>
@@ -819,7 +818,7 @@ q2:()=>`${qhead(2)}<div class="body"><h2 class="q st" style="--i:0">你最後想
 q3:()=>{let c='';for(let d=1;d<=30;d++){const inR=S.end!=null&&d>=S.start&&d<=S.end, s=d===S.start, e=d===(S.end??-1);
  c+=`<button class="day ${inR?'rng':''} ${(s&&inR)||(inR&&(d-1)%7===0)?'s':''} ${(e&&inR)||(inR&&(d-1)%7===6)?'e':''} ${s||e?'end':''} ${d===24?'today':''}" ${d>24?'disabled':''} data-act="day" data-v="${d}" aria-label="11 月 ${d} 日"><b>${d}</b></button>`}
  return `${qhead(3)}<div class="body"><h2 class="q st" style="--i:0">要整理哪一段時間？</h2><p class="hint st" style="--i:1">先點開始日，再點結束日</p>
- <div class="st" style="--i:2"><div class="cal-h"><button class="ib" aria-label="上個月" data-act="toast" data-v="示意：只開放 11 月">${I('back')}</button>2026 年 11 月<button class="ib" aria-label="下個月" disabled style="opacity:.3">${I('chev')}</button></div>
+ <div class="st" style="--i:2"><div class="cal-h"><button class="ib" aria-label="上個月" data-act="toast" data-v="目前只能選 11 月">${I('back')}</button>2026 年 11 月<button class="ib" aria-label="下個月" disabled style="opacity:.3">${I('chev')}</button></div>
  <div class="cal">${[...WD].map(w=>`<span class="wd">${w}</span>`).join('')}${c}</div></div>
  <div class="range st" style="--i:3"><span><small>開始</small>11/${S.start}（${wd(S.start)}）</span>${I('chev')}<span><small>結束</small>${S.end!=null?`11/${S.end}（${wd(S.end)}）`:'—'}</span>${S.end!=null?`<span class="tot">共 ${S.end-S.start+1} 天</span>`:''}</div></div>
  <div class="foot"><button class="btn" id="next" data-act="go" data-to="q4" ${OK.q3()?'':'disabled'}>下一步</button></div>`},
@@ -847,7 +846,7 @@ mix:()=>{buildMix();const tags=S.words;return `${hdr('整合成一篇')}<div cla
  ${S.mix.map((m,k)=>`<div class="mx st" style="--i:${Math.min(k+2,8)}"><div class="src"><span>${m.src}</span><span class="mxb"><button class="ib sm" data-act="mixMove" data-v="${k}" data-d="-1" aria-label="往上移" ${k?'':'disabled'}>${I('up')}</button><button class="ib sm" data-act="mixMove" data-v="${k}" data-d="1" aria-label="往下移" ${k<S.mix.length-1?'':'disabled'}>${I('dn')}</button><button class="ib sm" data-act="mixDel" data-v="${k}" aria-label="拿掉這段">${I('x')}</button></span></div><textarea rows="1" data-mix="${k}" aria-label="第 ${k+1} 段">${esc(m.t)}</textarea></div>`).join('')}
  ${tags.length?`<div class="tags">${tags.map(w=>`<span>#${esc(w)}</span>`).join('')}</div>`:''}</div>
  <div class="foot"><button class="skip" data-act="go" data-to="textMenu">再補一些</button><button class="btn" data-act="mixDone" ${S.mix.length?'':'disabled'}>用這版文字</button></div>`},
-recall:()=>{const ps=S.photos.length?S.photos:[0,2,6],N=Math.min(3,ps.length),i=S.ri;return `${hdr('看照片回想',`<button class="pillbtn" data-act="toast" data-v="示意：補充其他照片">${I('plus','style="width:14px;height:14px"')}補充</button>`,'recallBack')}<div class="body">
+recall:()=>{const ps=S.photos.length?S.photos:[0,2,6],N=Math.min(3,ps.length),i=S.ri;return `${hdr('看照片回想',`<button class="pillbtn" data-act="toast" data-v="可以回到照片頁補充更多照片">${I('plus','style="width:14px;height:14px"')}補充</button>`,'recallBack')}<div class="body">
  <div class="qn"><span>第 ${i+1} 題，共 ${N} 題</span><span class="dots">${Array.from({length:N},(_,k)=>`<i class="${k===i?'on':''}"></i>`).join('')}</span></div>
  <div class="bigph" key="${i}">${scene(ps[i])}</div>
  <p class="qq st" style="--i:1">${['拍下這張照片的時候，發生了什麼？','這一刻，你身邊有誰？','如果只能留一句話<wbr>給這張照片？'][i]}</p>
@@ -873,7 +872,7 @@ write:()=>`${hdr('直接寫')}<div class="body"><h2 class="q st" style="--i:0;ma
 find:()=>`${hdr('從手機找')}<div class="body"><h2 class="q st" style="--i:0;margin-top:8px">${range()} 你寫過這些</h2><p class="hint st" style="--i:1">從備忘錄和聊天紀錄裡挑出來，原文放進去</p>
  ${NOTES.map(([t,b],i)=>`<button class="row st ${S.notes.includes(i)?'on':''}" style="--i:${i+2};align-items:flex-start" data-act="note" data-v="${i}" aria-pressed="${S.notes.includes(i)}"><span class="grow"><small>${t}</small>${b}</span><span class="cb">${S.notes.includes(i)?I('check'):''}</span></button>`).join('')}</div>
  <div class="foot"><button class="btn" id="next" data-act="textDone" data-v="從手機找" ${OK.find()?'':'disabled'}>完成</button></div>`,
-music:()=>`${hdr('音樂')}<div class="body"><h2 class="q st" style="--i:0;margin-top:8px">替這一頁配一首歌</h2><p class="hint st" style="--i:1">這幾天你最常聽的（示意曲目）</p>
+music:()=>`${hdr('音樂')}<div class="body"><h2 class="q st" style="--i:0;margin-top:8px">替這一頁配一首歌</h2><p class="hint st" style="--i:1">這幾天你最常聽的</p>
  ${TRACKS.map(([t,a,c],i)=>`<button class="trk st ${S.music===i?'on':''}" style="--i:${i+2}" data-act="track" data-v="${i}" aria-pressed="${S.music===i}"><span class="cover">${scene(c)}</span><span class="grow"><strong>${t}</strong><small>${a}</small></span><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span></button>`).join('')}</div>
  <div class="foot"><button class="skip" data-act="musicDone" data-v="skip">這次不配</button><button class="btn" data-act="musicDone" ${S.music!=null?'':'disabled'}>完成</button></div>`,
 gen:()=>{const ps=S.photos.length?S.photos:[0];return `<div class="gen"><div class="asm" aria-hidden="true"><div class="frame"></div>
@@ -900,7 +899,7 @@ library:()=>{const y=S.libView==='y';const mc=MCOUNT.slice();if(S.saved)mc[10]+=
   if(!n)return `<div class="mon st" style="--i:${k+2}"><h3>${m+1} 月 <small>0 篇</small></h3><p class="empty">這個月沒有整理，也沒關係。</p></div>`;
   const imgs=isNew?(S.photos.length?S.photos:[0,2,5]):LIB[m][0].photos;
   return `<div class="mon st" style="--i:${k+2}"><h3>${m+1} 月 <small>${n} 篇</small>${isNew?'<span class="new">剛剛存入</span>':''}</h3><button class="col ${n===1?'one':''} ${isNew?'hl':''}" data-act="openPage" data-m="${m}" aria-label="打開 ${m+1} 月的回顧">${(n===1?imgs.slice(0,1):imgs).map(p=>`<div>${scene(p)}</div>`).join('')}</button></div>`}).join('')}
- else{inner=`<button class="yr cur st" style="--i:1" data-act="go" data-to="recap"><h3>2026 ${I('chev')}</h3><span class="mg">${mc.map((n,i)=>`<i class="${i===11?'fut':n>=3?'l3':n===2?'l2':n?'l1':''}">${i+1}</i>`).join('')}</span></button>`+[[2025,[4,9,1]],[2024,[6,3,11]]].map(([yy,t],k)=>`<button class="yr st" style="--i:${k+2}" data-act="toast" data-v="示意：${yy} 年的故事"><h3>${yy} ${I('chev')}</h3><span class="th3">${t.map(p=>`<div>${scene(p)}</div>`).join('')}</span></button>`).join('')}
+ else{inner=`<button class="yr cur st" style="--i:1" data-act="go" data-to="recap"><h3>2026 ${I('chev')}</h3><span class="mg">${mc.map((n,i)=>`<i class="${i===11?'fut':n>=3?'l3':n===2?'l2':n?'l1':''}">${i+1}</i>`).join('')}</span></button>`+[[2025,[4,9,1]],[2024,[6,3,11]]].map(([yy,t],k)=>`<div class="yr st" style="--i:${k+2}"><h3>${yy}</h3><span class="th3">${t.map(p=>`<div>${scene(p)}</div>`).join('')}</span></div>`).join('')}
  return `<div class="body"><div class="lhd st" style="--i:0"><h1>${y?'年度故事':'2026 年度故事'}</h1><div class="tg ${y?'y':''}" role="group" aria-label="檢視方式"><span class="knob"></span><button data-act="libView" data-v="m" aria-pressed="${!y}">月</button><button data-act="libView" data-v="y" aria-pressed="${y}">年</button></div></div>${inner}</div>${tabs('library')}`},
 recap:()=>{const total=MCOUNT.reduce((a,b)=>a+b,0)+(S.saved?1:0);const study=9,trip=3+(S.saved?1:0),friends=3;const pct=Math.round(study/total*100);const i=S.rs;let body='';
  if(i===0)body=`<p class="k">2026 年，你整理了</p><p class="huge"><span data-count="${total}">0</span><small> 篇</small></p><p class="k" style="animation-delay:.4s">回顧，從 1 月一路到 11 月。</p>`;
@@ -909,9 +908,9 @@ recap:()=>{const total=MCOUNT.reduce((a,b)=>a+b,0)+(S.saved?1:0);const study=9,t
  if(i===3){const mc=MCOUNT.slice();if(S.saved)mc[10]++;const mx=Math.max(...mc);body=`<p class="k">整理最多的月份</p><p class="huge" style="font-size:88px">2<small> 月</small></p><p class="k" style="animation-delay:.4s;font-size:16px;color:#C9C8D6">開學前的那個月，你整理了 3 篇。</p><div class="mbars">${mc.map((n,k)=>`<div><s class="${n===mx?'top':''}" style="height:${Math.max(4,n/mx*110)}px;--i:${k}"></s>${k+1}</div>`).join('')}</div>`}
  if(i===4)body=`<div style="animation:pop .6s var(--ease) both">${cap(120,'#F6F5F2','#1C1B2E')}</div><p class="k" style="font-size:28px;line-height:1.4">明年，也陪你<br>把日常，整理成文章。</p><p class="k" style="animation-delay:.4s;font-size:15px;color:#C9C8D6">一次一次完成的整理，累積成你這一年。</p>`;
  return `<div class="rc"><div class="rbars">${[0,1,2,3,4].map(k=>`<i class="${k<i?'done':k===i?'cur':''}"></i>`).join('')}</div>
- <div class="rtop"><span>2026 年度回顧（示意資料）</span><button class="ib" data-act="back" aria-label="關閉">${I('close','style="color:#F6F5F2"')}</button></div>
+ <div class="rtop"><span>2026 年度回顧</span><button class="ib" data-act="back" aria-label="關閉">${I('close','style="color:#F6F5F2"')}</button></div>
  <div class="rs" key="${i}"><div class="tap"><button data-act="rprev" aria-label="上一頁"></button><button data-act="rnext" aria-label="下一頁"></button></div>${body}</div>
- <div class="rfoot"><button class="w" data-act="toast" data-v="示意：分享到限動">${I('share')}分享</button><button class="o" data-act="${i===4?'back':'rnext'}">${i===4?'回到 Library':'下一頁'}</button></div></div>`}
+ <div class="rfoot"><button class="w" data-act="toast" data-v="已分享到限動">${I('share')}分享</button><button class="o" data-act="${i===4?'back':'rnext'}">${i===4?'回到 Library':'下一頁'}</button></div></div>`}
 };
 
 /* rendering + motion */
@@ -967,7 +966,7 @@ const SKIP=[[5,'和「七星潭的海」很像，留一張就好（選了光線�
 function openPick(){const sc=document.createElement('div');sc.className='scrim';sc.dataset.act='micCancel';const sh=document.createElement('div');sh.className='sheet';sh.setAttribute('role','dialog');sh.setAttribute('aria-label','幫我挑照片');
  sh.innerHTML=`<div class="grab"></div><h3>正在看你的 ${PH.length} 張照片⋯</h3><p class="sub">看人物、光線、有沒有重複，和拍攝的先後。</p><div class="scan">${PH.map((t,i)=>`<div style="--i:${i}">${scene(i)}</div>`).join('')}<i class="beam"></i></div>`;
  phone.append(sc,sh);
- setTimeout(()=>{if(!sh.isConnected)return;sh.innerHTML=`<div class="grab"></div><h3>建議這 ${PICK.length} 張，照這個順序</h3><p class="sub">理由都寫在旁邊，不喜歡就換掉。這是示意分析。</p>
+ setTimeout(()=>{if(!sh.isConnected)return;sh.innerHTML=`<div class="grab"></div><h3>建議這 ${PICK.length} 張，照這個順序</h3><p class="sub">理由都寫在旁邊，不喜歡就換掉。</p>
   <div class="sugs">${PICK.map(([i,tag,why],k)=>`<div class="sug" style="--i:${k}"><span class="sth">${scene(i)}<b>${k+1}</b></span><span class="grow"><strong>${PH[i]}<em>${tag}</em></strong><small>${why}</small></span></div>`).join('')}</div>
   <p class="lbl" style="margin:14px 0 8px">先略過的</p>${SKIP.map(([i,why])=>`<div class="sug mute"><span class="sth">${scene(i)}</span><span class="grow"><strong>${PH[i]}</strong><small>${why}</small></span></div>`).join('')}
   <div style="display:flex;gap:10px;margin-top:14px"><button class="btn ghost" data-act="micCancel">我自己選</button><button class="btn" data-act="applyPick">套用這 ${PICK.length} 張</button></div>`},1700)}
@@ -985,7 +984,7 @@ let micT=[];function getF(f){return f==='title'?S.title:f==='recall'?S.recall[S.
 function setF(f,v){if(f==='title')S.title=v;if(f==='recall')S.recall[S.ri]=v;if(f==='guide')S.g[S.gi]=v;if(f==='write')S.write=v;if(f==='chat')S.chatInput=v;if(f==='linkInput')S.linkInput=v}
 function sample(f){const a=SAY[f];if(f==='recall')return a[S.ri]||a[0];if(f==='guide')return a[S.gi];if(f==='chat')return a[Math.min(2,S.chat.filter(m=>m.u).length)];return a[0]}
 function openMic(f){const text=sample(f);const sc=document.createElement('div');sc.className='scrim';sc.dataset.act='micCancel';const sh=document.createElement('div');sh.className='sheet';sh.setAttribute('role','dialog');sh.setAttribute('aria-label','語音輸入');
- sh.innerHTML=`<div class="grab"></div><div class="mic-top"><span class="rec" id="rec"></span><span id="mst">聆聽中⋯</span><time id="mtm">0:00</time></div><div class="wave" id="wave">${'<i></i>'.repeat(30)}</div><p class="tr" aria-live="polite"><span id="trc"></span><span class="itm" id="tri"></span><span class="caret" id="crt"></span></p><p class="mnote">示意聽寫：預覽環境無法開啟麥克風，這裡用範例語音模擬即時轉錄。</p><div style="display:flex;gap:10px"><button class="btn ghost" data-act="micCancel">取消</button><button class="btn" id="mok" data-act="micInsert" data-field="${f}" disabled>放進文字框</button></div>`;
+ sh.innerHTML=`<div class="grab"></div><div class="mic-top"><span class="rec" id="rec"></span><span id="mst">聆聽中⋯</span><time id="mtm">0:00</time></div><div class="wave" id="wave">${'<i></i>'.repeat(30)}</div><p class="tr" aria-live="polite"><span id="trc"></span><span class="itm" id="tri"></span><span class="caret" id="crt"></span></p><p class="mnote">說完後按「放進文字框」，之後還能再改。</p><div style="display:flex;gap:10px"><button class="btn ghost" data-act="micCancel">取消</button><button class="btn" id="mok" data-act="micInsert" data-field="${f}" disabled>放進文字框</button></div>`;
  phone.append(sc,sh);const bars=[...sh.querySelectorAll('#wave i')];let live=true,t0=Date.now();
  micT.push(setInterval(()=>{const s=Math.floor((Date.now()-t0)/1000);sh.querySelector('#mtm').textContent=`0:${String(s).padStart(2,'0')}`;bars.forEach((b,k)=>{const env=live?(.35+.65*Math.abs(Math.sin(Date.now()/260+k*.5))):0.08;b.style.height=Math.max(8,env*(40+Math.random()*60))+'%'})},90));
  const ch=[];let i=0;while(i<text.length){const n=1+Math.floor(Math.random()*3);ch.push(text.slice(i,i+n));i+=n}
@@ -994,7 +993,7 @@ function openMic(f){const text=sample(f);const sc=document.createElement('div');
 function closeMic(){micT.forEach(t=>{clearInterval(t);clearTimeout(t)});micT=[];phone.querySelectorAll('.scrim,.sheet').forEach(e=>{e.classList.add('out');setTimeout(()=>e.remove(),300)})}
 function sheetDone(kind,ids=[]){const sc=document.createElement('div');sc.className='scrim';const sh=document.createElement('div');sh.className='sheet';sh.setAttribute('role','dialog');const names=ids.map(id=>FORMATS.find(x=>x.id===id).n).join('、');const e=entry();
  sh.innerHTML=`<div class="grab"></div><div class="loader" role="status" aria-label="處理中"></div><p style="text-align:center;font-weight:700">${kind==='pub'?`正在發佈到 ${names}⋯`:'存進 Library⋯'}</p>`;phone.append(sc,sh);
- later(()=>{sh.innerHTML=`<div class="grab"></div><div class="done-ic"><svg class="i" viewBox="0 0 24 24">${P.check}</svg></div><h2 style="text-align:center;margin:0 0 4px;font-size:22px">${kind==='pub'?'完成了！':'存好了'}</h2><p style="text-align:center;color:var(--muted);margin:0 0 20px;font-size:15px">${kind==='pub'?`已發佈到 ${names}（示意）${S.view?'。':'，也自動存進 Library。'}`:'在 Library 的 11 月可以找到它。'}<br>辛苦了，這段日子被好好收起來了。</p>${S.task&&kind==='pub'&&ids.includes('igpost')?`<p class="notion">${I('check')}<s>發美國打工度假回顧文</s><small>可以去 Notion 劃掉了</small></p>`:''}<div style="display:flex;gap:10px"><button class="btn ghost" data-act="closeSheet" data-to="home">回首頁</button><button class="btn" data-act="closeSheet" data-to="library">去 Library 看看</button></div>`;
+ later(()=>{sh.innerHTML=`<div class="grab"></div><div class="done-ic"><svg class="i" viewBox="0 0 24 24">${P.check}</svg></div><h2 style="text-align:center;margin:0 0 4px;font-size:22px">${kind==='pub'?'完成了！':'存好了'}</h2><p style="text-align:center;color:var(--muted);margin:0 0 20px;font-size:15px">${kind==='pub'?`已發佈到 ${names}${S.view?'。':'，也自動存進 Library。'}`:'在 Library 的 11 月可以找到它。'}<br>辛苦了，這段日子被好好收起來了。</p>${S.task&&kind==='pub'&&ids.includes('igpost')?`<p class="notion">${I('check')}<s>發美國打工度假回顧文</s><small>可以去 Notion 劃掉了</small></p>`:''}<div style="display:flex;gap:10px"><button class="btn ghost" data-act="closeSheet" data-to="home">回首頁</button><button class="btn" data-act="closeSheet" data-to="library">去 Library 看看</button></div>`;
   const cf=document.createElement('div');cf.className='conf';cf.innerHTML=Array.from({length:26},(_,k)=>`<i style="left:${Math.random()*100}%;background:${['var(--coral)','var(--sun)','var(--ink)'][k%3]};--dx:${(Math.random()-.5)*160}px;animation-delay:${Math.random()*.4}s;${k%4===0?'border-radius:2px;':''}"></i>`).join('');phone.appendChild(cf);setTimeout(()=>cf.remove(),2400)},kind==='pub'?1100:700);ids.forEach(id=>{if(!e.published.includes(id))e.published.push(id)});if(S.task&&kind==='pub'&&ids.includes('igpost')&&!TASK.done){TASK.done=true;TASK.t1=Date.now();tickTask()}if(!S.view)S.saved=true}
 function openPicker(){const e=entry();const pre=e.published.length?null:(e.format!=='lib'?e.format:'igpost');const sc=document.createElement('div');sc.className='scrim';sc.dataset.act='micCancel';const sh=document.createElement('div');sh.className='sheet';sh.setAttribute('role','dialog');sh.setAttribute('aria-label','選擇發佈平台');
  sh.innerHTML=`<div class="grab"></div><h3>要發到哪裡？</h3><p class="sub">同一頁內容，會自動調整成各平台的樣子。可以選很多個。</p>${FORMATS.filter(f=>f.pub).map(f=>{const done=e.published.includes(f.id),on=f.id===pre;return `<button class="plat ${on?'on':''}" data-act="plat" data-v="${f.id}" aria-pressed="${on}" ${done?'disabled style="opacity:.5"':''}><span class="ico">${I(f.ic)}</span><span class="grow"><strong>${f.n}</strong><small>${done?'已發佈過':ADAPT[f.id]}</small></span><span class="cb">${I('check')}</span></button>`}).join('')}<div style="display:flex;gap:10px;margin-top:8px"><button class="btn ghost" data-act="micCancel">取消</button><button class="btn cta" id="pgo" data-act="pgo" style="font-size:17px" ${pre?'':'disabled'}>${pre?'發佈到 1 個平台':'選擇至少一個平台'}</button></div>`;
@@ -1034,13 +1033,13 @@ const ACT={
  save:()=>sheetDone('save'),publish:()=>sheetDone('pub'),
  closeSheet:e=>{phone.querySelectorAll('.scrim,.sheet').forEach(x=>x.remove());S.libView='m';if(S.view&&e.dataset.to==='library'){refresh();return}show(e.dataset.to,e.dataset.to==='home'?-1:1)},
  openPage:e=>{const m=+e.dataset.m;S.view=(m===10&&S.saved)?null:LIB[m][0];S.pageFrom='lib';show('page',1)},
- edit:()=>{if(S.view){toast('示意：舊紀錄也能回到清單編輯');return}S.pageFrom='flow';S.just=null;show('list',-1)},
+ edit:()=>{if(S.view){toast('這篇已經完成，可以直接選平台發佈');return}S.pageFrom='flow';S.just=null;show('list',-1)},
  picker:()=>openPicker(),
  plat:e=>{e.classList.toggle('on');e.setAttribute('aria-pressed',e.classList.contains('on'));const n=phone.querySelectorAll('.sheet .plat.on').length;const b=phone.querySelector('#pgo');b.disabled=!n;b.textContent=n?`發佈到 ${n} 個平台`:'選擇至少一個平台'},
  pgo:()=>{const ids=[...phone.querySelectorAll('.sheet .plat.on')].map(x=>x.dataset.v);phone.querySelectorAll('.scrim,.sheet').forEach(x=>x.remove());sheetDone('pub',ids)},
  intro:()=>Intro.play(),
  startTask:()=>{S=fresh();S.task=true;TASK.t0=Date.now();TASK.on=true;TASK.done=false;tickTask();show('auth',1);toast('任務開始：現在是 23:03')},
- sso:e=>{loading(`正在用 ${e.dataset.v} 帳號登入⋯`,()=>{USER.authed=true;show('home',1);toast(`已用 ${e.dataset.v} 帳號登入（示意）`)})},
+ sso:e=>{loading(`正在用 ${e.dataset.v} 帳號登入⋯`,()=>{USER.authed=true;show('home',1);toast(`已用 ${e.dataset.v} 帳號登入`)})},
  guest:()=>{show('home',1);toast('先逛逛吧，整理的內容會先存在這支手機')},
  present:()=>present(true),unpresent:()=>present(false),
  libView:e=>{S.libView=e.dataset.v;refresh(false)},
@@ -1051,7 +1050,7 @@ const ACT={
 document.addEventListener('click',ev=>{const el=ev.target.closest('[data-act]');if(!el||el.disabled)return;const f=ACT[el.dataset.act];if(f){ev.preventDefault();f(el)}});
 document.addEventListener('input',ev=>{if(ev.target.dataset&&ev.target.dataset.mix!=null){S.mix[+ev.target.dataset.mix].t=ev.target.value;ev.target.style.height='auto';ev.target.style.height=ev.target.scrollHeight+'px';return}const k=ev.target.dataset&&ev.target.dataset.bind;if(!k)return;setF(k==='recall'||k==='guide'||k==='title'||k==='write'||k==='chat'?k:k==='chatInput'?'chat':k,ev.target.value);const n=curEl&&curEl.querySelector('#next');if(n&&OK[S.cur])n.disabled=!OK[S.cur]()});
 document.addEventListener('submit',ev=>{const f=ev.target.dataset.form;if(!f)return;ev.preventDefault();
- if(f==='login'){loading('登入中⋯',()=>{USER.authed=true;show('home',1);toast('登入成功（示意）')});return}
+ if(f==='login'){loading('登入中⋯',()=>{USER.authed=true;show('home',1);toast('登入成功')});return}
  if(f==='signup'){const n=ev.target.querySelector('#sn').value.trim();if(!ev.target.querySelector('#sa').checked){toast('請先勾選同意條款');return}if(n)USER.name=n;loading('建立帳號中⋯',()=>{USER.authed=true;show('home',1);toast(`歡迎，${USER.name}`)});return}
  if(f==='chat'){const t=S.chatInput.trim();if(!t||S.typing)return;S.chat.push({u:1,t});S.chatInput='';S.newMsg=true;refresh();const n=S.chat.filter(m=>m.u).length;later(()=>bot(Math.min(n,3)),500)}});
 document.addEventListener('keydown',ev=>{if(S.cur==='recap'&&!phone.querySelector('.sheet')){if(ev.key==='ArrowRight')ACT.rnext();if(ev.key==='ArrowLeft')ACT.rprev()}});
